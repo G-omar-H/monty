@@ -1,5 +1,6 @@
 #ifndef MOUNTY_H
 #define MOUNTY_H
+#define _GNU_SOURCE
 
 #include <stdio.h>
 #include <stdlib.h>

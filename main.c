@@ -3,12 +3,13 @@
 /***/
 int main(int ac, char **av)
 {
+	char **arr = NULL;
+	int fd, line_num = 0, i = 0;
 	size_t n = 0;
-	ssize_t siize;
 	FILE *stream;
-	int fd, line_num = 0;
 	instruction_t *op;
 
+	(void)arr;
 	if (!(op = malloc(sizeof(instruction_t))))
 	{
 		fprintf(stderr, "Error: malloc failed");
@@ -25,11 +26,14 @@ int main(int ac, char **av)
 		fprintf(stderr, "Error: Can't open file %s\n", av[1]);
 		exit(EXIT_FAILURE);
 	}
-	stream = fdopen(fd, "r"); 
-	siize = getline(op->opcode, &n, stream);
-	printf("%s\n", op->opcode);
-	line_num++;
-	close(fd);
+	stream = fdopen(fd, "r");
+	while (getline(&op->opcode, &n, stream) != -1)
+	{
+		printf("%s\n",op->opcode);
+		line_num++;
+		i++;
+	}
+	fclose(stream);
 	free(op);
 	return (0);
 }
