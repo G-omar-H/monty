@@ -1,39 +1,25 @@
 #include "monty.h"
-#include <stdio.h>
-/***/
+argument_t *arg = NULL;
+/**
+ * main - monty interpreter
+ * @ac: arguments counter
+ * @av: arguments vector
+ * Return: int 
+ */
 int main(int ac, char **av)
 {
-	char **arr = NULL;
-	int fd, line_num = 0, i = 0;
 	size_t n = 0;
-	FILE *stream;
-	instruction_t *op;
+	int line_count = 0;
 
-	(void)arr;
-	if (!(op = malloc(sizeof(instruction_t))))
+	validate_usage(ac);
+	initialize_args();
+	get_stream(av[1]);
+	while (getline(&arg->line, &n, arg->file) != -1)
 	{
-		fprintf(stderr, "Error: malloc failed");
-		exit(EXIT_FAILURE);
+		printf("%s", arg->line);
+		line_count++;
 	}
-	if (ac  != 2)
-	{
-		write(2, "USAGE: mounty file", 18);
-		exit(EXIT_FAILURE);
-	}
-	fd = open(av[1], O_RDONLY);
-	if (fd == -1)
-	{
-		fprintf(stderr, "Error: Can't open file %s\n", av[1]);
-		exit(EXIT_FAILURE);
-	}
-	stream = fdopen(fd, "r");
-	while (getline(&op->opcode, &n, stream) != -1)
-	{
-		printf("%s\n",op->opcode);
-		line_num++;
-		i++;
-	}
-	fclose(stream);
-	free(op);
+	fclose(arg->file);
+	free(arg);
 	return (0);
 }

@@ -38,4 +38,27 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+/**
+ * struct argument_t - struct of global variables 
+ * 
+ */
+typedef struct argument_s
+{
+        char *line;
+        FILE *file;
+} argument_t;
+
+/*Global vribale*/
+extern argument_t *arg;
+
+/*error handlers*/
+void malloc_fails();
+void validate_usage(int ac);
+void open_fails(char *filename);
+
+/*stream handlers*/
+void initialize_args();
+void get_stream(char *filename);
+
+
 #endif /*MOUNTY_H*/
