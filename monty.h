@@ -1,8 +1,14 @@
 #ifndef MONTY_H
 #define MONTY_H
+#define _GNU_SOURCE
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <sys/types.h>
+#include <unistd.h>
+#include <fcntl.h>
+#include <string.h>
+#include <ctype.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -30,7 +36,6 @@ typedef struct mon_s
 	int j;
 } mon_t;
 extern mon_t mon;
-
 /**
  * struct instruction_s - opcode and its function
  * @opcode: the opcode
@@ -45,5 +50,7 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-
+int execute(char *character_content, stack_t **stack, unsigned int character_counter, FILE *file_cont);
+void pall_stc(stack_t **head, unsigned int char_counter);
+void free_allstack(stack_t *head);
 #endif /*monty.h*/
