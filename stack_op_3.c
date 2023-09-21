@@ -35,3 +35,26 @@ void pchar(stack_t **stack, unsigned int line_number)
 	}
 	printf("%c\n", arg->head->n);
 }
+/**
+ * pstr - prints the character value of the the top of a stack.
+ * @stack: top stack tracker
+ * @line_number: line number track
+ * Return: void.
+ */
+void pstr(stack_t **stack, unsigned int line_number)
+{
+
+	(void)line_number;
+	(*stack) = arg->head;
+	if (!arg->head)
+	{
+		printf("\n");
+		return;
+	}
+	while ((*stack) && (*stack)->n != 0 && isascii((*stack)->n))
+	{
+		printf("%c", (*stack)->n);
+		(*stack) = (*stack)->next;
+	}
+	printf("\n");
+}

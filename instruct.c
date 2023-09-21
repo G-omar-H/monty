@@ -15,6 +15,7 @@ void get_instruct(void)
 		{"nop", &nop}, {"sub", &sub},
 		{"div", &_div}, {"mul", &mul},
 		{"mod", &mod}, {"pchar", &pchar},
+		{"pstr", &pstr},
 		{NULL, NULL}
 	};
 	if (arg->tok_number == 0)
