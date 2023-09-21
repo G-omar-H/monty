@@ -20,17 +20,18 @@ void nop(stack_t **stack, unsigned int line_number)
  */
 void pchar(stack_t **stack, unsigned int line_number)
 {
-    if (!arg->head)
+	(void)(*stack);
+	if (!arg->head)
 	{
 		fprintf(stderr, "L%d: can't pchar, stack empty\n", line_number);
 		free_all_args();
 		exit(EXIT_FAILURE);
 	}
-    else if (!isascii(arg->head->n))
+	else if (!isascii(arg->head->n))
 	{
 		fprintf(stderr, "L%d: can't pchar, value out of range\n", line_number);
 		free_all_args();
 		exit(EXIT_FAILURE);
 	}
-    printf("%c\n", arg->head->n);
+	printf("%c\n", arg->head->n);
 }
