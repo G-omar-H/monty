@@ -17,6 +17,7 @@ void add(stack_t **stack, unsigned int line_number)
 	(*stack)->n += arg->head->n;
 	free(arg->head);
 	arg->head = (*stack);
+    arg->stack_len -= 1;
 }
 /**
  * sub - perform substraction operation for the two tops on the stack
@@ -36,6 +37,7 @@ void sub(stack_t **stack, unsigned int line_number)
 	(*stack)->n -= arg->head->n;
 	free(arg->head);
 	arg->head = (*stack);
+    arg->stack_len -= 1;
 }
 /**
  * _div - perform division operation for the two tops on the stack
@@ -61,6 +63,7 @@ void _div(stack_t **stack, unsigned int line_number)
 	(*stack)->n /= arg->head->n;
 	free(arg->head);
 	arg->head = (*stack);
+    arg->stack_len -= 1;
 }
 /**
  * mul - perform multiplication operation for the two tops on the stack
@@ -80,6 +83,7 @@ void mul(stack_t **stack, unsigned int line_number)
 	(*stack)->n *= arg->head->n;
 	free(arg->head);
 	arg->head = (*stack);
+    arg->stack_len -= 1;
 }
 /**
  * mod - perform moduler operation for the two tops on the stack.
@@ -105,4 +109,5 @@ void mod(stack_t **stack, unsigned int line_number)
 	(*stack)->n %= arg->head->n;
 	free(arg->head);
 	arg->head = (*stack);
+    arg->stack_len -= 1;
 }
