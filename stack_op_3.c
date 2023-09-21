@@ -36,7 +36,7 @@ void pchar(stack_t **stack, unsigned int line_number)
 	printf("%c\n", arg->head->n);
 }
 /**
- * pstr - prints the character value of the the top of a stack.
+ * pstr - prints the string value of the stack.
  * @stack: top stack tracker
  * @line_number: line number track
  * Return: void.
@@ -57,4 +57,31 @@ void pstr(stack_t **stack, unsigned int line_number)
 		(*stack) = (*stack)->next;
 	}
 	printf("\n");
+}
+/**
+ * rotl - prints the character value of the the top of a stack.
+ * @stack: top stack tracker
+ * @line_number: line number track
+ * Return: void.
+ */
+void rotl(stack_t **stack, unsigned int line_number)
+{
+	stack_t *tail = NULL;
+
+	(void)line_number;
+	if (arg->head && arg->head->next)
+	{
+		tail = malloc(sizeof(stack_t));
+		(*stack) = arg->head;
+		while ((*stack)->next)
+		{
+			(*stack) = (*stack)->next;
+		}
+		tail->n = arg->head->n;
+		tail->prev = (*stack);
+		tail->next = NULL;
+		(*stack) = arg->head;
+		arg->head = arg->head->next;
+		free((*stack));
+	}
 }
