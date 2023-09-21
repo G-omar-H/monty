@@ -25,6 +25,11 @@ void get_stream(char *filename)
 	{
 		arg->line_number += 1;
 		tokenize_line();
+		if (arg->tokens[0][0] == '#')
+		{
+			free_arr_tokens();
+			continue;
+		}
 		get_instruct();
 		execute_opcode();
 		free_arr_tokens();
