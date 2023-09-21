@@ -11,6 +11,7 @@ void get_instruct(void)
 	instruction_t instruction[] = {
 		{"push", &push}, {"pall", &pall},
 		{"pint", &pint}, {"pop", &pop},
+		{"swap", &swap}, {"add", &add},
 		{NULL, NULL}
 	};
 	if (arg->tok_number == 0)
