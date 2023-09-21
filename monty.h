@@ -52,5 +52,17 @@ typedef struct instruction_s
 
 int execute(char *character_content, stack_t **stack, unsigned int character_counter, FILE *file_cont);
 void pall_stc(stack_t **head, unsigned int char_counter);
+void nd_push(stack_t **head, unsigned int character_counter);
+void nd_pint(stack_t **head, unsigned int character_counter);
+void nd_pop(stack_t **head, unsigned int character_counter);
+void nd_swap(stack_t **head, unsigned int character_counter);
+void nd_add(stack_t **head, unsigned int character_counter);
+void nd_nop(stack_t **head, unsigned int character_counter);
 void free_allstack(stack_t *head);
+
+void nd_sub(stack_t **head, unsigned int character_counter);
+void nd_adv_pstr(stack_t **head, unsigned int character_counter);
+void ad_node_tohead(stack_t **head, int n);
+void tof_que(stack_t **head, unsigned int character_counter);
+void add_node_to_queue(stack_t **head, int n);
 #endif /*monty.h*/

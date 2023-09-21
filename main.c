@@ -1,5 +1,4 @@
 #include "monty.h"
-mon_t mon = {NULL, NULL, NULL, 0};
 /**
  * main - Entry point
  * @argc: Argument count
@@ -7,7 +6,7 @@ mon_t mon = {NULL, NULL, NULL, 0};
  *
  * Return: Always 0
  */
-
+mon_t mon = {NULL, NULL, NULL, 0};
 int main(int argc, char *argv[])
 {
 	char *character_content;
@@ -17,20 +16,20 @@ int main(int argc, char *argv[])
 	stack_t *stack = NULL;
 	unsigned int character_counter = 0;
 
-    if (argc != 2)
-    {
-        fprintf(stderr, "USAGE: monty file\n");
-        exit(EXIT_FAILURE);
-    }
+	if (argc != 2)
+	{
+		fprintf(stderr, "USAGE: monty file\n");
+		exit(EXIT_FAILURE);
+	}
 
-    file_cont = fopen(argv[1], "r");
+	file_cont = fopen(argv[1], "r");
 
-    if (!file_cont)
-    {
-        fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
-        exit(EXIT_FAILURE);
-    }
-    while (readContent_line > 0)
+	if (!file_cont)
+	{
+		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
+		exit(EXIT_FAILURE);
+	}
+	while (readContent_line > 0)
 	{
 		character_content = NULL;
 		readContent_line = getline(&character_content, &size, file_cont);
@@ -46,6 +45,6 @@ int main(int argc, char *argv[])
 	free_allstack(stack);
 	fclose(file_cont);
 
-    return (0);
+	return (0);
 }
 

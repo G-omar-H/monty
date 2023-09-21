@@ -14,9 +14,17 @@ int execute(char *character_content, stack_t **stack,
 {
 	instruction_t opcdt[] = {
 		{"pall", pall_stc},
+		{"push", nd_push},
+		{"pint", nd_pint},
+		{"pop", nd_pop},
+		{"swap", nd_swap},
+		{"add", nd_add},
+		{"nop", nd_nop},
+		{"sub", nd_sub},
+		{"pstr", nd_adv_pstr},
 		{NULL, NULL}
 	};
-	unsigned int a;
+	unsigned int a = 0;
 	char *opcd;
 
 	opcd = strtok(character_content, " \n\t");
