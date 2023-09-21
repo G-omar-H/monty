@@ -55,14 +55,14 @@ void pall(stack_t **stack, unsigned int line_number)
  */
 void pint(stack_t **stack, unsigned int line_number)
 {
-	(*stack) = arg->head;
-	if (!stack)
+	(void)(*stack);
+	if (!arg->head)
 	{
 		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
 		free_all_args();
 		exit(EXIT_FAILURE);
 	}
-	printf("%d\n", (*stack)->n);
+	printf("%d\n", arg->head->n);
 }
 /**
  * pop - remove the value at the top of a stack.
