@@ -1,6 +1,10 @@
 #include "monty.h"
-/***/
-void get_instruct()
+/**
+ * get_instruct - validate instruction from opcode
+ *
+ * Return: void.
+ */
+void get_instruct(void)
 {
 	int i = 0;
 
@@ -10,7 +14,7 @@ void get_instruct()
 	};
 	if (arg->tok_number == 0)
 		return;
-	for (;instruction[i].opcode != NULL; i++)
+	for (; instruction[i].opcode != NULL; i++)
 	{
 		if (strcmp(instruction[i].opcode, arg->tokens[0]) == 0)
 		{
@@ -22,8 +26,12 @@ void get_instruct()
 	invalid_instruction();
 }
 
-/***/
-void execute_opcode()
+/**
+ * execute_opcode - run the opcode instruction
+ *
+ * Return: void.
+ */
+void execute_opcode(void)
 {
 	stack_t *stack = NULL;
 
@@ -32,7 +40,11 @@ void execute_opcode()
 	arg->op->f(&stack, arg->line_number);
 }
 
-/***/
+/**
+ * is_number - check if a string is a number
+ * @str: sring to check
+ * Return: void.
+ */
 int is_number(char *str)
 {
 	int i = 0;

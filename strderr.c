@@ -1,7 +1,9 @@
 #include "monty.h"
 
 /**
- * invalid_usage - display to the stderr when wrong usage
+ * validate_usage - ckeck the programme usage
+ * display to the stderr when wrong usage
+ * @ac: argument counter.
  * Return: void.
  */
 void validate_usage(int ac)
@@ -16,7 +18,7 @@ void validate_usage(int ac)
  * malloc_fails - display to the stderr when malloc fails
  * Return: void.
  */
-void malloc_fails()
+void malloc_fails(void)
 {
 	fprintf(stderr, "Error: malloc failed\n");
 	free_args();
@@ -35,17 +37,26 @@ void open_fails(char *filename)
 	exit(EXIT_FAILURE);
 }
 
-/***/
-void invalid_instruction()
+/**
+ * invalid_instruction - stderr & exit failure
+ *
+ * Return: void.
+ */
+void invalid_instruction(void)
 {
-	fprintf(stderr, "L%d: unknown instruction %s\n", arg->line_number, arg->tokens[0]);
+	fprintf(stderr, "L%d: unknown instruction %s\n",
+		arg->line_number, arg->tokens[0]);
 	close_stream();
 	free_arr_tokens();
 	free_args();
 	exit(EXIT_FAILURE);
 }
 
-/***/
+/**
+ * wrong_push - stderr & exit failure
+ * @line_number: line number tracker
+ * Return: void
+ */
 void wrong_push(unsigned int line_number)
 {
 	fprintf(stderr, "L%d: usage: push integer\n", line_number);

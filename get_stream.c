@@ -1,5 +1,9 @@
 #include "monty.h"
-/***/
+/**
+ * get_stream - Get the stream object
+ * @filename: fileanme string
+ * Return: void.
+ */
 void get_stream(char *filename)
 {
 	int fd;
@@ -36,4 +40,15 @@ void close_stream(void)
 		return;
 	fclose(arg->file);
 	arg->file = NULL;
+}
+/**
+ * free_all_args - calls all free functions for the project
+ *
+ * Return: void.
+ */
+void free_all_args(void)
+{
+	close_stream();
+	free_arr_tokens();
+	free_args();
 }

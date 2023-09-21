@@ -20,9 +20,9 @@
  */
 typedef struct stack_s
 {
-        int n;
-        struct stack_s *prev;
-        struct stack_s *next;
+	int n;
+	struct stack_s *prev;
+	struct stack_s *next;
 } stack_t;
 
 /**
@@ -35,56 +35,64 @@ typedef struct stack_s
  */
 typedef struct instruction_s
 {
-        char *opcode;
-        void (*f)(stack_t **stack, unsigned int line_number);
+	char *opcode;
+	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
 /**
- * struct argument_t - struct of global variables 
- * 
+ * struct argument_t - struct of global variables elements
+ * @line: line string regoster
+ * @file: file descriptor
+ * @line_number: track of the nd line
+ * @tok_number: track of the token lenght
+ * @stack_len: track of the stack lincked_list leght
+ * @token: 2nd dimention array of tokens
+ * @op: pointer to instrution struct above
+ * @head: pointer to the top stack lincked_list struct
+ * Description: struct of global variables.
  */
 typedef struct argument_s
 {
-        char *line;
-        FILE *file;
-        unsigned int line_number;
-        unsigned int tok_number;
-        unsigned int stack_len;
-        char **tokens;
-        instruction_t *op;
-        stack_t *head;
+	char *line;
+	FILE *file;
+	unsigned int line_number;
+	unsigned int tok_number;
+	unsigned int stack_len;
+	char **tokens;
+	instruction_t *op;
+	stack_t *head;
 } argument_t;
 
 /*Global vribale*/
 extern argument_t *arg;
 
 /*error handlers*/
-void malloc_fails();
+void malloc_fails(void);
 void validate_usage(int ac);
 void open_fails(char *filename);
 void wrong_push(unsigned int line_number);
-void invalid_instruction();
+void invalid_instruction(void);
 
 /*stream handlers*/
-void initialize_args();
+void initialize_args(void);
 void get_stream(char *filename);
-void close_stream();
+void close_stream(void);
 
 /*opcodes handlers*/
-void tokenize_line();
-void get_instruct();
+void tokenize_line(void);
+void get_instruct(void);
 int is_number(char *str);
-void execute_opcode();
+void execute_opcode(void);
 
 /*operators*/
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 
 /*memory delibaters*/
-void free_arr_tokens();
-void free_args();
-void free_head();
+void free_arr_tokens(void);
+void free_args(void);
+void free_head(void);
 void free_stack(stack_t *head);
-void free_all_args();
+void free_all_args(void);
 
 #endif /*MOUNTY_H*/

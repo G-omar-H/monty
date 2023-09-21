@@ -1,7 +1,11 @@
 #include "monty.h"
 
-/***/
-void tokenize_line()
+/**
+ * tokenize_line - do parcing line by delimiter string
+ *
+ * Return: void.
+*/
+void tokenize_line(void)
 {
 	int i = 0;
 	char *token = NULL, *line_copy = NULL, *delims = " \n\t";
@@ -15,13 +19,15 @@ void tokenize_line()
 		arg->tok_number += 1;
 		token = strtok(NULL, delims);
 	}
-	if ((arg->tokens = malloc(sizeof(char *) * (arg->tok_number + 1))) == NULL)
+	arg->tokens = malloc(sizeof(char *) * (arg->tok_number + 1));
+	if (arg->tokens == NULL)
 		malloc_fails();
 	strcpy(line_copy, arg->line);
 	token = strtok(line_copy, delims);
 	while (token != NULL)
 	{
-		if (((arg->tokens[i] = malloc(sizeof(char) * (strlen(token) + 1))) == NULL))
+		arg->tokens[i] = malloc(sizeof(char) * (strlen(token) + 1));
+		if (arg->tokens[i] == NULL)
 			malloc_fails();
 		strcpy(arg->tokens[i], token);
 		token = strtok(NULL, delims);
