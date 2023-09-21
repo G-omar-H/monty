@@ -69,19 +69,21 @@ void rotl(stack_t **stack, unsigned int line_number)
 	stack_t *tail = NULL;
 
 	(void)line_number;
-	if (arg->head && arg->head->next)
+	if (arg->stack_len < 2)
+		return;
+	(*stack) = arg->head;
+	tail = (*stack)->next;
+	arg->head = tail;
+	while ((*stack))
 	{
-		tail = malloc(sizeof(stack_t));
-		(*stack) = arg->head;
-		while ((*stack)->next)
+		if (!tail->next)
 		{
-			(*stack) = (*stack)->next;
+
+			tail->next = (*stack);
+			(*stack)->next = NULL;
+			(*stack)->prev = tail;
+			break;
 		}
-		tail->n = arg->head->n;
-		tail->prev = (*stack);
-		tail->next = NULL;
-		(*stack) = arg->head;
-		arg->head = arg->head->next;
-		free((*stack));
+		tail = tail->next;
 	}
 }
