@@ -4,12 +4,16 @@
  * @stack: top stack tracker
  * @line_number: line number track
  * Return: void.
-*/
+ */
 void push(stack_t **stack, unsigned int line_number)
 {
 
 	if (arg->tok_number <= 1 || !is_number(arg->tokens[1]))
-		wrong_push(line_number);
+	{
+		fprintf(stderr, "L%d: usage: push integer\n", line_number);
+		free_all_args();
+		exit(EXIT_FAILURE);
+	}
 	(*stack) = malloc(sizeof(stack_t));
 	if ((*stack) == NULL)
 		malloc_fails();
@@ -28,7 +32,7 @@ void push(stack_t **stack, unsigned int line_number)
  * @stack: top stack tracker
  * @line_number: line number track
  * Return: void.
-*/
+ */
 void pall(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp = arg->head;
@@ -42,4 +46,40 @@ void pall(stack_t **stack, unsigned int line_number)
 		printf("%d\n", temp->n);
 		temp = temp->next;
 	}
+}
+/**
+ * pint - print the value at the top of a stack.
+ * @stack: top stack tracker
+ * @line_number: line number track
+ * Return: void.
+ */
+void pint(stack_t **stack, unsigned int line_number)
+{
+	(*stack) = arg->head;
+	if (!stack)
+	{
+		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
+		free_all_args();
+		exit(EXIT_FAILURE);
+	}
+	printf("%d\n", (*stack)->n);
+}
+/**
+ * pop - remove the value at the top of a stack.
+ * @stack: top stack tracker
+ * @line_number: line number track
+ * Return: void.
+ */
+void pop(stack_t **stack, unsigned int line_number)
+{
+	(*stack) = arg->head;
+	if (!(*stack))
+	{
+		fprintf(stderr, "L%d: can't pop, stack empty\n", line_number);
+		free_all_args();
+		exit(EXIT_FAILURE);
+	}
+	arg->head = (*stack)->next;
+	free(*stack);
+	arg->stack_len -= 1;
 }

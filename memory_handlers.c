@@ -89,6 +89,7 @@ void free_stack(stack_t *head)
 	{
 		head = node->next;
 		free(node);
+	head->prev = NULL;
 		node  = head;
 	}
 	free(node);

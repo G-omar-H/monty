@@ -87,6 +87,9 @@ void execute_opcode(void);
 /*operators*/
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
+void pint(stack_t **stack, unsigned int line_number);
+void pop(stack_t **stack, unsigned int line_number);
+
 
 /*memory delibaters*/
 void free_arr_tokens(void);

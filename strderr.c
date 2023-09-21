@@ -51,15 +51,3 @@ void invalid_instruction(void)
 	free_args();
 	exit(EXIT_FAILURE);
 }
-
-/**
- * wrong_push - stderr & exit failure
- * @line_number: line number tracker
- * Return: void
- */
-void wrong_push(unsigned int line_number)
-{
-	fprintf(stderr, "L%d: usage: push integer\n", line_number);
-	free_all_args();
-	exit(EXIT_FAILURE);
-}
