@@ -75,7 +75,7 @@ void pop(stack_t **stack, unsigned int line_number)
 	(*stack) = arg->head;
 	if (!(*stack))
 	{
-		fprintf(stderr, "L%d: can't pop, stack empty\n", line_number);
+		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
 		free_all_args();
 		exit(EXIT_FAILURE);
 	}
