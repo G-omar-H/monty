@@ -6,12 +6,11 @@ void get_instruct()
 
 	instruction_t instruction[] = {
 		{"push", &push}, {"pall", &pall},
-		/*{"pint", &pint}, {"swap", &swap},
-		  {"nop", &nop}, {"add", &add}*/ 
+		{NULL, NULL}
 	};
 	if (arg->tok_number == 0)
 		return;
-	for (;instruction[i].opcode ; i++)
+	for (;instruction[i].opcode != NULL; i++)
 	{
 		if (strcmp(instruction[i].opcode, arg->tokens[0]) == 0)
 		{

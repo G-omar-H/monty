@@ -1,7 +1,5 @@
 #include "monty.h"
 
-
-
 /***/
 void tokenize_line()
 {
