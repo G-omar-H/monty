@@ -59,7 +59,7 @@ void pstr(stack_t **stack, unsigned int line_number)
 	printf("\n");
 }
 /**
- * rotl - prints the character value of the the top of a stack.
+ * rotl - rotates top stack element with the tail.
  * @stack: top stack tracker
  * @line_number: line number track
  * Return: void.
@@ -85,5 +85,30 @@ void rotl(stack_t **stack, unsigned int line_number)
 			break;
 		}
 		tail = tail->next;
+	}
+}
+/**
+ * rotr - rotates top stack element with the tail.
+ * @stack: top stack tracker
+ * @line_number: line number track
+ * Return: void.
+ */
+void rotr(stack_t **stack, unsigned int line_number)
+{
+	(void)line_number;
+	if (arg->stack_len < 2)
+		return;
+	(*stack) = arg->head;
+	while (arg->head)
+	{
+		if (!(*stack)->next)
+		{
+			arg->head->prev = (*stack);
+			(*stack)->next = arg->head;
+			(*stack)->prev->next = NULL;
+			arg->head = (*stack);
+			break;
+		}
+		(*stack) = (*stack)->next;
 	}
 }
