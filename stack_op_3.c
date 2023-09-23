@@ -88,7 +88,7 @@ void rotl(stack_t **stack, unsigned int line_number)
 	}
 }
 /**
- * rotr - rotates top stack element with the tail.
+ * rotr - rotates tail element to  the top of the stack.
  * @stack: top stack tracker
  * @line_number: line number track
  * Return: void.

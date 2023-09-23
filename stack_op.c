@@ -7,7 +7,7 @@
  */
 void push(stack_t **stack, unsigned int line_number)
 {
-
+	arg->tail = arg->head;
 	if (arg->tok_number <= 1 || !is_number(arg->tokens[1]))
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
@@ -21,10 +21,23 @@ void push(stack_t **stack, unsigned int line_number)
 	(*stack)->next = (*stack)->prev = NULL;
 	if (arg->head)
 	{
-		(*stack)->next = arg->head;
-		arg->head->prev = (*stack);
+		while (arg->tail->next)
+			arg->tail = arg->tail->next;
+		if (arg->mode == 0)
+		{
+			(*stack)->next = arg->head;
+			arg->head->prev = (*stack);
+			arg->head = (*stack);
+		}
+		else if (arg->mode == 1)
+		{
+			arg->tail->next = (*stack);
+			(*stack)->prev = arg->tail;
+			arg->tail = (*stack);
+		}
 	}
-	arg->head = (*stack);
+	else
+		arg->head = (*stack);
 	arg->stack_len += 1;
 }
 /**

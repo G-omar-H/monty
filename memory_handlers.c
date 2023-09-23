@@ -14,11 +14,13 @@ void initialize_args(void)
 	if (arg->op == NULL)
 		malloc_fails();
 	arg->head = NULL;
+	arg->tail = NULL;
 	arg->line = NULL;
 	arg->file = NULL;
 	arg->line_number = 0;
 	arg->tok_number = 0;
 	arg->stack_len = 0;
+	arg->mode = 0;
 }
 /**
  * free_arr_tokens - frees a 2nd dimnsion array

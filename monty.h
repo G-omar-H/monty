@@ -58,9 +58,11 @@ typedef struct argument_s
 	unsigned int line_number;
 	unsigned int tok_number;
 	unsigned int stack_len;
+	unsigned int mode;
 	char **tokens;
 	instruction_t *op;
 	stack_t *head;
+	stack_t *tail;
 } argument_t;
 
 /*Global vribale*/
@@ -100,7 +102,8 @@ void pchar(stack_t **stack, unsigned int line_number);
 void pstr(stack_t **stack, unsigned int line_number);
 void rotl(stack_t **stack, unsigned int line_number);
 void rotr(stack_t **stack, unsigned int line_number);
-
+void stack(stack_t **stack, unsigned int line_number);
+void queue(stack_t **stack, unsigned int line_number);
 
 /*memory delibaters*/
 void free_arr_tokens(void);
