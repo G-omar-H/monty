@@ -2,7 +2,7 @@
 /**
  * get_instruct - validate instruction from opcode
  *
- * Return: void.
+ * Return: void.{"nop", &nop},
  */
 void get_instruct(void)
 {
@@ -12,7 +12,7 @@ void get_instruct(void)
 		{"push", &push}, {"pall", &pall},
 		{"pint", &pint}, {"pop", &pop},
 		{"swap", &swap}, {"add", &add},
-		{"nop", &nop}, {"sub", &sub},
+		{"sub", &sub},
 		{"div", &_div}, {"mul", &mul},
 		{"mod", &mod}, {"pchar", &pchar},
 		{"pstr", &pstr}, {"rotl", &rotl},
