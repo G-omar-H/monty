@@ -1,18 +1,6 @@
 #include "monty.h"
 #include <stdio.h>
 /**
- * nop - continue.
- * @stack: top stack tracker
- * @line_number: line number track
- * Return: void.
- */
-void nop(stack_t **stack, unsigned int line_number)
-{
-	(void)stack;
-	(void)line_number;
-	return;
-}
-/**
  * pchar - prints the character value of the the top of a stack.
  * @stack: top stack tracker
  * @line_number: line number track
