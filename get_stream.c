@@ -1,4 +1,5 @@
 #include "monty.h"
+#include <stdio.h>
 /**
  * get_stream - Get the stream object
  * @filename: fileanme string
@@ -12,7 +13,6 @@ void get_stream(char *filename)
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
 	{
-		free_args();
 		open_fails(filename);
 	}
 	arg->file = fdopen(fd, "r");
@@ -25,10 +25,13 @@ void get_stream(char *filename)
 	{
 		arg->line_number += 1;
 		tokenize_line();
-		if (arg->tokens[0][0] == '#')
+		if (arg->tok_number > 0)
 		{
-			free_arr_tokens();
-			continue;
+			if (arg->tokens[0][0] == '#')
+			{
+				free_arr_tokens();
+				continue;
+			}
 		}
 		get_instruct();
 		execute_opcode();
