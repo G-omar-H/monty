@@ -1,4 +1,5 @@
 #include "monty.h"
+
 /**
  * stack - set the stack data_structur's type.
  * @stack: top stack tracker

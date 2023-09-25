@@ -1,4 +1,5 @@
 #include "monty.h"
+
 /**
  * add - merge the top two nodes.
  * @stack: top stack tracker

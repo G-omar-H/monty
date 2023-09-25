@@ -1,5 +1,5 @@
 #include "monty.h"
-#include <stdio.h>
+
 /**
  * get_stream - Get the stream object
  * @filename: fileanme string

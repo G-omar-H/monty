@@ -1,4 +1,5 @@
 #include "monty.h"
+
 /**
  * initialize_args - do initialize global argument pointer struct elements
  *

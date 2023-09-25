@@ -1,4 +1,5 @@
 #include "monty.h"
+
 /**
  * push - push a value to a lincked list stack
  * @stack: top stack tracker

@@ -1,4 +1,5 @@
 #include "monty.h"
+
 /**
  * get_instruct - validate instruction from opcode
  *
